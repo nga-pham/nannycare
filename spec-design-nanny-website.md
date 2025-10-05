@@ -1,5 +1,5 @@
 # Requirement
-
+We need to create a list of pet facility and pet shop and connect them with potential users. We already have connections. The idea is similar to booking.com or Agoda page
 # System analysis and design for booking nanny website
 The website consists of 6 pages, a header and a footer
 ## 1. Landing page

@@ -1,6 +1,154 @@
-﻿
+﻿import { useState } from "react";
+import { Container, Row, Col, Button, Card, CardGroup } from "react-bootstrap";
+import { Star, Calendar, PawPrint, ChevronRight } from "lucide-react";
+import heroImage from "../assets/caregiver.jpg";
+import caregiversGroup from "../assets/caregiver-group.jpg";
+import serviceIcon from '../assets/service-icon.png';
+
 const HeroSection = () => {
-    return <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
+    const [selectedService, setSelectedService] = useState("sitting");
+
+    return (
+        <section className="py-5">
+            <Container>
+                <Row className="align-items-center g-5">
+                    <Col lg={6}>
+                        <div className="mb-4">
+                            <h1 className="display-3 fw-bold mb-3">Local, trusted nanny care</h1>
+                            <p className="fs-4 text-muted">Book 5-star babysitting near you</p>
+                        </div>
+
+                        <div className="d-flex align-items-center gap-3 mb-4">
+                            <div className="d-flex">
+                                {[1, 2, 3, 4].map((i) => (
+                                    <div
+                                        key={i}
+                                        className="rounded-circle border border-3 border-white"
+                                        style={{
+                                            width: "48px",
+                                            height: "48px",
+                                            marginLeft: i > 1 ? "-12px" : "0",
+                                            backgroundImage: `url(${caregiversGroup})`,
+                                            backgroundSize: "cover",
+                                            backgroundPosition: `${(i - 1) * 33}% center`,
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                            <div>
+                                <div className="d-flex gap-1 mb-1">
+                                    {[1, 2, 3, 4, 5].map((i) => (
+                                        <Star key={i} size={16} fill="#ffc107" color="#ffc107" />
+                                    ))}
+                                </div>
+                                <p className="mb-0 fw-medium small">400K+ babysisters nationwide</p>
+                            </div>
+                        </div>
+
+                        <div className="bg-success p-4 rounded-4 shadow-lg">
+                            <h2 className="fs-5 fw-bold text-white mb-4">
+                                Ready to get started? Book your first service now!
+                            </h2>
+
+                            <CardGroup>
+                                <Card style={{ width: '12rem' }}>
+                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
+                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
+                                        <Card.Title>Confinement Nanny</Card.Title>
+                                    </Card.Body>
+                                </Card>
+                                <Card style={{ width: '12rem' }}>
+                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
+                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
+                                        <Card.Title>One Time / Ad Hoc</Card.Title>
+                                    </Card.Body>
+                                </Card>
+                                <Card style={{ width: '12rem' }}>
+                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
+                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
+                                        <Card.Title>Recurring / Long-term</Card.Title>
+                                    </Card.Body>
+                                </Card>
+                            </CardGroup>
+                            {/*<Row className="g-3 mb-4">
+                                <Col xs={6} lg={3}>
+                                    <Card style={{ width: '12rem' }}>
+                                        <Card.Img variant="top" src={ serviceIcon} style={{ width: '100px', height: '100px' }} />
+                                        <Card.Body>
+                                            <Card.Title>Confinement Nanny</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col xs={6} lg={3}>
+                                    
+                                </Col>
+                                <Col xs={6} lg={3}>
+                                    
+                                </Col>
+                                <Col xs={6} lg={3}>
+                                    
+                                </Col>
+                            </Row>*/}
+
+                            <div className="bg-white p-3 rounded-3 d-flex flex-column flex-sm-row gap-3 align-items-center">
+                                <div className="d-flex gap-3 flex-wrap">
+                                    <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
+                                        <Calendar size={20} className="text-success" />
+                                        <span className="fw-medium">Sep 27 - Sep 28</span>
+                                    </div>
+                                    <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
+                                        <PawPrint size={20} className="text-success" />
+                                        <span className="fw-medium">1 Cat</span>
+                                    </div>
+                                </div>
+                                <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto">
+                                    Continue <ChevronRight size={20} />
+                                </Button>
+                            </div>
+                        </div>
+                    </Col>
+
+                    <Col lg={6} className="d-flex justify-content-center justify-content-lg-end">
+                        <div className="position-relative">
+                            <div
+                                className="position-absolute bg-white shadow-lg rounded-circle d-flex align-items-center justify-content-center p-3"
+                                style={{
+                                    width: "128px",
+                                    height: "128px",
+                                    top: "-16px",
+                                    right: "-16px",
+                                    zIndex: 10,
+                                }}
+                            >
+                                <div className="border border-success border-3 rounded-circle w-100 h-100 d-flex align-items-center justify-content-center">
+                                    <div className="text-center">
+                                        <div className="d-flex justify-content-center gap-1 mb-1">
+                                            <PawPrint size={16} fill="#198754" color="#198754" />
+                                            <PawPrint size={16} fill="#198754" color="#198754" />
+                                        </div>
+                                        <p className="mb-0 fw-bold" style={{ fontSize: "9px", lineHeight: "1.2" }}>
+                                            TRUSTED BY<br />MILLIONS OF<br />PARENTS
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                className="rounded-circle overflow-hidden shadow"
+                                style={{ width: "500px", height: "500px" }}
+                            >
+                                <img
+                                    src={heroImage}
+                                    alt="Professional pet caregiver with a happy dog"
+                                    className="w-100 h-100"
+                                    style={{ objectFit: "cover" }}
+                                />
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+    );
 };
 
 export default HeroSection;

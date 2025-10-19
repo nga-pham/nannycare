@@ -1,12 +1,21 @@
 ﻿import { useState } from "react";
-import { Container, Row, Col, Button, Card, CardGroup } from "react-bootstrap";
-import { Star, Calendar, PawPrint, ChevronRight } from "lucide-react";
+import { Container, Row, Col, Button, CardGroup } from "react-bootstrap";
+import { Star, Calendar, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
 import heroImage from "../assets/caregiver.jpg";
 import caregiversGroup from "../assets/caregiver-group.jpg";
 import serviceIcon from '../assets/service-icon.png';
+import ServiceCard from "../components/ui/ServiceCard";
 
 const HeroSection = () => {
-    const [selectedService, setSelectedService] = useState("sitting");
+    const [selectedService, setSelectedService] = useState("conf-nanny");
+    const [numOfBabies, setNumOfBabies] = useState(0);
+    const incrementBabies = () => setNumOfBabies(numOfBabies + 1);
+    const decrementBabies = () => setNumOfBabies(num => {
+        if (num > 0) {
+            return num - 1;
+        } else return 0;
+    });
+
 
     return (
         <section className="py-5">
@@ -51,44 +60,25 @@ const HeroSection = () => {
                             </h2>
 
                             <CardGroup>
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
-                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
-                                        <Card.Title>Confinement Nanny</Card.Title>
-                                    </Card.Body>
-                                </Card>
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
-                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
-                                        <Card.Title>One Time / Ad Hoc</Card.Title>
-                                    </Card.Body>
-                                </Card>
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={serviceIcon} style={{ width: '100px', height: '100px' }} />
-                                    <Card.Body className="d-flex flex-column align-items-center gap-3 py-4">
-                                        <Card.Title>Recurring / Long-term</Card.Title>
-                                    </Card.Body>
-                                </Card>
+                                <ServiceCard
+                                    icon={serviceIcon}
+                                    title="Confinement Nanny"
+                                    selected={selectedService === "conf-nanny"}
+                                    onClick={() => setSelectedService("conf-nanny")}
+                                />
+                                <ServiceCard
+                                    icon={serviceIcon}
+                                    title="One Time / Ad Hoc"
+                                    selected={selectedService === "adhoc"}
+                                    onClick={() => setSelectedService("adhoc")}
+                                />
+                                <ServiceCard
+                                    icon={serviceIcon}
+                                    title="Recurring / Long-term"
+                                    selected={selectedService === "recurring"}
+                                    onClick={() => setSelectedService("recurring")}
+                                />
                             </CardGroup>
-                            {/*<Row className="g-3 mb-4">
-                                <Col xs={6} lg={3}>
-                                    <Card style={{ width: '12rem' }}>
-                                        <Card.Img variant="top" src={ serviceIcon} style={{ width: '100px', height: '100px' }} />
-                                        <Card.Body>
-                                            <Card.Title>Confinement Nanny</Card.Title>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col xs={6} lg={3}>
-                                    
-                                </Col>
-                                <Col xs={6} lg={3}>
-                                    
-                                </Col>
-                                <Col xs={6} lg={3}>
-                                    
-                                </Col>
-                            </Row>*/}
 
                             <div className="bg-white p-3 rounded-3 d-flex flex-column flex-sm-row gap-3 align-items-center">
                                 <div className="d-flex gap-3 flex-wrap">
@@ -97,12 +87,13 @@ const HeroSection = () => {
                                         <span className="fw-medium">Sep 27 - Sep 28</span>
                                     </div>
                                     <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
-                                        <PawPrint size={20} className="text-success" />
-                                        <span className="fw-medium">1 Cat</span>
+                                        <Plus style={{ cursor: "pointer", }} onClick={incrementBabies}>+</Plus>
+                                        {numOfBabies} Babies
+                                        <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
-                                <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto">
-                                    Continue <ChevronRight size={20} />
+                                <Button variant="primary" size="md" className="d-flex align-items-center gap-2 ms-sm-auto">
+                                    Continue <ChevronRight size={10} />
                                 </Button>
                             </div>
                         </div>

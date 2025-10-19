@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "../src/pages/NotFound";
 
-
 const App = () => (
     <TooltipProvider>
         <Toaster />

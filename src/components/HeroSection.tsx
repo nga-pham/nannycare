@@ -92,7 +92,7 @@ const HeroSection = () => {
                                         <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
-                                <Button variant="primary" size="md" className="d-flex align-items-center gap-2 ms-sm-auto">
+                                <Button variant="primary" size="sm" className="d-flex align-items-center gap-2 ms-sm-auto">
                                     Continue <ChevronRight size={10} />
                                 </Button>
                             </div>

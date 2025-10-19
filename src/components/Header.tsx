@@ -1,24 +1,16 @@
-import { useState } from "react";
-import { ChevronDown, Menu, X, Heart } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { cn } from "../lib/utils";
+import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
+import { Heart } from "lucide-react";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const services = [
+    const services = [
     { name: "Confinement Nanny", href: "#confinement" },
     { name: "One Time / Ad Hoc", href: "#adhoc" },
     { name: "Recurring / Long-term", href: "#recurring" },
   ];
 
-  const toggleDropdown = (dropdown: string) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-  };
-
-  return (
-// collapse below lg (show in one row at lg+). In production, consider change to md
+    return (
+        // collapse below lg (show in one row at lg+). In production, consider change to md
     <Navbar bg="light" className="border-bottom" expand="lg">
       <Container>
         <Navbar.Brand href="#home" className="d-flex align-items-center gap-2">
@@ -28,7 +20,6 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
-        {/* ms-auto pushes nav items to the right; align-items-center keeps them vertically centered */}
           <Nav className="ms-auto align-items-center"> 
           <NavDropdown title="Services" id="services-dropdown">
               <NavDropdown.Item href="#walking">Walking</NavDropdown.Item>
@@ -51,6 +42,6 @@ const Header = () => {
       </Container>
     </Navbar>
   );
-};
+}
 
 export default Header;

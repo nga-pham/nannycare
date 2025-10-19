@@ -1,11 +1,11 @@
-//import Header from "../components/Header";
+import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
 import Footer from "../components/Footer";
 import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
 import { Heart } from "lucide-react";
 
-
+/*
 const Header = () => {
 
     const services = [
@@ -25,6 +25,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
+        // ms-auto pushes nav items to the right; align-items-center keeps them vertically centered
           <Nav className="ms-auto align-items-center"> 
           <NavDropdown title="Services" id="services-dropdown">
               <NavDropdown.Item href="#walking">Walking</NavDropdown.Item>
@@ -48,7 +49,7 @@ const Header = () => {
     </Navbar>
   );
 }
-
+*/
 
 const Index = () => {
     return (

@@ -22,13 +22,9 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center"> 
           <NavDropdown title="Services" id="services-dropdown">
-              <NavDropdown.Item href="#walking">Walking</NavDropdown.Item>
-              <NavDropdown.Item href="#sitting">Sitting</NavDropdown.Item>
-              <NavDropdown.Item href="#boarding">Boarding</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Health & Wellness" id="health-dropdown">
-              <NavDropdown.Item href="#wellness">Wellness</NavDropdown.Item>
-              <NavDropdown.Item href="#health">Health</NavDropdown.Item>
+              {services.map((service) => (
+              <NavDropdown.Item href={service.href}>{service.name}</NavDropdown.Item>
+              ))}
             </NavDropdown>
             <Nav.Link href="#resources">Resources</Nav.Link>
             <Nav.Link href="#help">Help Center & Safety</Nav.Link>

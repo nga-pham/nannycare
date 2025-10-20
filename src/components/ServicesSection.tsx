@@ -1,6 +1,6 @@
 ﻿
 const ServicesSection = () => {
-    return <div>ServicesSection</div>
+    return <div>List of caregivers</div>
 };
 
 export default ServicesSection;

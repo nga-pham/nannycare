@@ -26,9 +26,9 @@ const Header = () => {
               <NavDropdown.Item href={service.href}>{service.name}</NavDropdown.Item>
               ))}
             </NavDropdown>
-            <Nav.Link href="#resources">Pricing</Nav.Link>
-            <Nav.Link href="#help">FAQ</Nav.Link>
-            <Nav.Link href="#resources">About us</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="#faq">FAQ</Nav.Link>
+            <Nav.Link href="#about">About us</Nav.Link>
             </Nav>
           <Button variant="success" className="d-flex align-items-center gap-2">
             <Heart size={16} />

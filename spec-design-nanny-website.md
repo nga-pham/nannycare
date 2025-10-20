@@ -15,13 +15,12 @@ When a customer clicks this button, the system will ask if they have already sig
 - if they've already signed up: the system will change to sign in form.
 - if they've not: the system will change to sign up form, instructing them to create an account and come back to sign in form.
 
-After signing in, the system will redirect to another page to choose the options and fill in form, with more detail about your booking (when to get baby to sleep, etc...)
-The options are a list of nannies, each with their experience, expertise, information, and their available time.
-
-After completing it, user will pay deposit and click button "send request". Their information will be saved in the system and they will be redirected to payment page.
+After signing in, the system will redirect to another page to choose the option. The options are a list of nannies, each with their experience, expertise, information, and their available time. Then user can fill in form, with more detail about your booking (when to get baby to sleep, enquiries, etc...)
 
 (if we don't need authentication)
 A payment form will appear, showing that they should fill in a detail form (first name, last name, email address, id number, etc...), and button "send request". Their information will be saved in the system and they will be redirected to payment page.
+
+* payment page: User will pay deposit and click button "send request"...
 
 ### 1.2. Instruction section
 * Include a media highlighting how to book, a step-by step instruction

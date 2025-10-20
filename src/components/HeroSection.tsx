@@ -16,7 +16,6 @@ const HeroSection = () => {
     const formattedDisplayDate = selectedDateTime ? moment(selectedDateTime).format('DD-MM-YYYY') : '';
     const handleDateChange = (e) => {
         setSelectedDateTime(e.target.value);
-        console.log("Selected Date/Time:", e.target.value);
       };
 
     // Choose number of babies

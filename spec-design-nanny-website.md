@@ -52,5 +52,6 @@ Contain 4 sections:
 * Section 4: information (phone, address…)
 
 ### 4. Service page
-### 5. Account page
-### 6. “Contact us” page + FAQ
+### 5. “About us” page + FAQ
+### 6. Privacy Policy
+### 7. Terms of Service

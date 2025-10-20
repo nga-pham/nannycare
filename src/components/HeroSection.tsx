@@ -1,13 +1,25 @@
 ﻿import { useState } from "react";
-import { Container, Row, Col, Button, CardGroup } from "react-bootstrap";
+import { Container, Row, Col, Button, CardGroup, Form } from "react-bootstrap";
 import { Star, Calendar, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
 import heroImage from "../assets/caregiver.jpg";
 import caregiversGroup from "../assets/caregiver-group.jpg";
 import serviceIcon from '../assets/service-icon.png';
 import ServiceCard from "../components/ui/ServiceCard";
+import moment from 'moment'; 
 
 const HeroSection = () => {
+    // Choose services from card group
     const [selectedService, setSelectedService] = useState("conf-nanny");
+
+    // Choose date range
+    const [selectedDateTime, setSelectedDateTime] = useState('');
+    const formattedDisplayDate = selectedDateTime ? moment(selectedDateTime).format('DD-MM-YYYY') : '';
+    const handleDateChange = (e) => {
+        setSelectedDateTime(e.target.value);
+        console.log("Selected Date/Time:", e.target.value);
+      };
+
+    // Choose number of babies
     const [numOfBabies, setNumOfBabies] = useState(0);
     const incrementBabies = () => setNumOfBabies(numOfBabies + 1);
     const decrementBabies = () => setNumOfBabies(num => {
@@ -21,7 +33,7 @@ const HeroSection = () => {
         <section className="py-5">
             <Container>
                 <Row className="align-items-center g-5">
-                    <Col lg={6}>
+                    <Col lg={7}>
                         <div className="mb-4">
                             <h1 className="display-3 fw-bold mb-3">Local, trusted nanny care</h1>
                             <p className="fs-4 text-muted">Book 5-star babysitting near you</p>
@@ -59,6 +71,7 @@ const HeroSection = () => {
                                 Ready to get started? Book your first service now!
                             </h2>
 
+                            {/* Service Selection */}
                             <CardGroup>
                                 <ServiceCard
                                     icon={serviceIcon}
@@ -80,12 +93,21 @@ const HeroSection = () => {
                                 />
                             </CardGroup>
 
+                            {/* Date/Time picker */ }
                             <div className="bg-white p-3 rounded-3 d-flex flex-column flex-sm-row gap-3 align-items-center">
                                 <div className="d-flex gap-3 flex-wrap">
                                     <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
-                                        <Calendar size={20} className="text-success" />
-                                        <span className="fw-medium">Sep 27 - Sep 28</span>
+                                        <Form.Group controlId="formDate">
+                                            <Form.Label>Select Date </Form.Label>
+                                            <Form.Control
+                                                type="date"
+                                                value={selectedDateTime}
+                                                onChange={handleDateChange}
+                                            />
+                                        </Form.Group>
                                     </div>
+
+                                    {/* Number of babies selector */ }
                                     <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
                                         <Plus style={{ cursor: "pointer", }} onClick={incrementBabies}>+</Plus>
                                         {numOfBabies} Babies
@@ -99,7 +121,7 @@ const HeroSection = () => {
                         </div>
                     </Col>
 
-                    <Col lg={6} className="d-flex justify-content-center justify-content-lg-end">
+                    <Col lg={5} className="d-flex justify-content-center justify-content-lg-end">
                         <div className="position-relative">
                             <div
                                 className="position-absolute bg-white shadow-lg rounded-circle d-flex align-items-center justify-content-center p-3"

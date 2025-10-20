@@ -11,7 +11,7 @@ const Header = () => {
 
     return (
         // collapse below lg (show in one row at lg+). In production, consider change to md
-    <Navbar bg="light" className="border-bottom" expand="lg">
+        <Navbar bg="light" className="border-bottom" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand href="#home" className="d-flex align-items-center gap-2">
           <span className="fs-4 fw-bold m-0">NannyCare</span>
@@ -26,8 +26,9 @@ const Header = () => {
               <NavDropdown.Item href={service.href}>{service.name}</NavDropdown.Item>
               ))}
             </NavDropdown>
-            <Nav.Link href="#resources">Resources</Nav.Link>
-            <Nav.Link href="#help">Help Center & Safety</Nav.Link>
+            <Nav.Link href="#resources">Pricing</Nav.Link>
+            <Nav.Link href="#help">FAQ</Nav.Link>
+            <Nav.Link href="#resources">About us</Nav.Link>
             </Nav>
           <Button variant="success" className="d-flex align-items-center gap-2">
             <Heart size={16} />

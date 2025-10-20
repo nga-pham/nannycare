@@ -1,11 +1,11 @@
 # Requirement
-We need to create a list of pet facility and pet shop and connect them with potential users. We already have connections. The idea is similar to booking.com or Agoda page
+We need to create a list of pet facilities and pet shops and connect them with potential users. We already have connections. The idea is similar to booking.com or Agoda page
 # System analysis and design for booking nanny website
 The website consists of 6 pages, a header and a footer
 ## 1. Landing page
 The most important page, consists of 5 sections:
 ### 1.1. Booking section
-Include a place to advertise the page, and a booking form for customers to book services. 
+Include a place to advertise, and a booking form for customers to book services. 
 * To advertise the page: use a photo and a slogan.
 * To book services: list of available services (confinement nanny, one time / ad hoc, recurring / long-term), date and time picker, enquiries (optional), in grid styles. User then can look at each nanny, see if someone is match, choose someone to see details (redirect to detail page). Then they can choose someone and click "book now"
 

@@ -1,4 +1,4 @@
-﻿import { Container, Row, Carousel, Stack, Card} from "react-bootstrap";
+﻿import { Container, Row, Carousel, Stack, Card, Tabs, Tab} from "react-bootstrap";
 import nannies from "../nannies.json"
 import { Star } from 'lucide-react';
 
@@ -48,6 +48,7 @@ const ServicesSection = () => {
     return (
         <section className="py-5">
             <Container>
+                {/* Recommended Nannies Carousel */} 
                 <Row className="mb-4">
                     <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'left', }}>
                         Recommended
@@ -85,11 +86,26 @@ const ServicesSection = () => {
                     <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'left', }}>
                         New Nannies
                     </h2></Row>
+
+                {/* Show nannies by Districts Tabs */}   
                 <Row className="mb-4">
                     <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'left', }}>
                         Browse by Districts
                     </h2>
-                    <p>{districts}</p>
+                    <Tabs defaultActiveKey="home" fill>
+                        {districts.map((district, idx) => (
+                            <Tab eventKey={district} title={district}>
+                                {nannies.map((nanny) => {
+                                    if (nanny.district === district) {
+                                        return (
+                                            <p>{nanny.name}</p>
+                                        )
+                                    }
+                                })}
+                            </Tab>
+                            
+                        ) )}
+                    </Tabs>
                 </Row>
             </Container>
         </section>

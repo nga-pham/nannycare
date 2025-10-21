@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { Container, Row, Col, Button, CardGroup, Form } from "react-bootstrap";
-import { Star, Calendar, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
+import { Star, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
 import heroImage from "../assets/caregiver.jpg";
 import caregiversGroup from "../assets/caregiver-group.jpg";
 import serviceIcon from '../assets/service-icon.png';
@@ -113,7 +113,7 @@ const HeroSection = () => {
                                         <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
-                                <Button variant="primary" size="sm" className="d-flex align-items-center gap-2 ms-sm-auto">
+                                <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto">
                                     Continue <ChevronRight size={10} />
                                 </Button>
                             </div>

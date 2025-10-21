@@ -95,7 +95,7 @@ const ServicesSection = () => {
                     <Tabs defaultActiveKey="home" fill>
                         {districts.map(district => (
                             <Tab eventKey={district} title={district}>
-                                <Carousel data-bs-theme="dark" className="mt-10">
+                                <Carousel data-bs-theme="dark">
                                 {nannies.map((nanny) => {
                                     if (nanny.district === district) {
                                         return (

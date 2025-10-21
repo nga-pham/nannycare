@@ -4,7 +4,7 @@ import { Star, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
 import heroImage from "../assets/caregiver.jpg";
 import caregiversGroup from "../assets/caregiver-group.jpg";
 import serviceIcon from '../assets/service-icon.png';
-import ServiceCard from "../components/ui/ServiceCard";
+import HeroCard from "../components/ui/HeroCard";
 import moment from 'moment'; 
 
 const HeroSection = () => {
@@ -72,19 +72,19 @@ const HeroSection = () => {
 
                             {/* Service Selection */}
                             <CardGroup>
-                                <ServiceCard
+                                <HeroCard
                                     icon={serviceIcon}
                                     title="Confinement Nanny"
                                     selected={selectedService === "conf-nanny"}
                                     onClick={() => setSelectedService("conf-nanny")}
                                 />
-                                <ServiceCard
+                                <HeroCard
                                     icon={serviceIcon}
                                     title="One Time / Ad Hoc"
                                     selected={selectedService === "adhoc"}
                                     onClick={() => setSelectedService("adhoc")}
                                 />
-                                <ServiceCard
+                                <HeroCard
                                     icon={serviceIcon}
                                     title="Recurring / Long-term"
                                     selected={selectedService === "recurring"}

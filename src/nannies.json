@@ -32,7 +32,8 @@
       "CPR certified",
       "meal preparation"
     ],
-    "recommended":true
+    "recommended": true,
+    "dayToJoin": "2024-10-15"
   },
   {
     "id": 2,
@@ -67,7 +68,8 @@
       "CPR certified",
       "meal preparation"
     ],
-    "recommended": false
+    "recommended": false,
+    "dayToJoin": "2025-09-01"
   },
   {
     "id": 3,
@@ -102,7 +104,8 @@
       "CPR certified",
       "meal preparation"
     ],
-    "recommended":true
+    "recommended": true,
+    "dayToJoin": "2023-11-20"
   },
   {
     "id": 4,
@@ -137,7 +140,8 @@
       "CPR certified",
       "meal preparation"
     ],
-    "recommended":true
+    "recommended": true,
+    "dayToJoin": "2025-01-10"
   },
   {
     "id": 5,
@@ -172,6 +176,7 @@
       "CPR certified",
       "meal preparation"
     ],
-    "recommended":true
+    "recommended": true,
+    "dayToJoin": "2024-05-15"
   }
 ]

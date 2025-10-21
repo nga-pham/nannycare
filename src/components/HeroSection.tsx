@@ -120,6 +120,7 @@ const HeroSection = () => {
                         </div>
                     </Col>
 
+                    {/* Logo */ }
                     <Col lg={5} className="d-flex justify-content-center justify-content-lg-end">
                         <div className="position-relative">
                             <div

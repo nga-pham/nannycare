@@ -35,11 +35,28 @@ const ServiceCard = ({ photos, name, rating, numberOfRating, address, district, 
 
 const lengthOfCarouselItem = 3;
 
-// Group nannies into chunks of `lengthOfCarouselItem`
-  let nannyBlocks = [];
+// First get recommended nannies, then group them into chunks of `lengthOfCarouselItem`
+  let recommendedBlocks = [];
   for (let i = 0; i < nannies.length; i += lengthOfCarouselItem) {
-    nannyBlocks.push(nannies.slice(i, i + lengthOfCarouselItem));
+      recommendedBlocks.push(
+          nannies.filter(nanny => nanny.recommended)
+              .slice(i, i + lengthOfCarouselItem)
+      );
   }
+
+// First get new nannies, then group them into chunks of `lengthOfCarouselItem`
+// Convert dates to timestamps for comparison
+const todayTimestamps = Date.parse(new Date().toISOString());
+let newBlocks = [];
+
+// If dayToJoin is within last 365 days, consider as new nanny
+const gap = 365 * 24 * 60 * 60 * 1000; // 365 days in milliseconds
+for (let i = 0; i < nannies.length; i += lengthOfCarouselItem) {
+    newBlocks.push(
+        nannies.filter(nanny => todayTimestamps - Date.parse(nanny.dayToJoin) <= gap)
+              .slice(i, i + lengthOfCarouselItem)
+    )
+}
 
 // Group nannies by district
 const districts = Array.from(new Set(nannies.map(nanny => nanny.district)));
@@ -54,29 +71,25 @@ const ServicesSection = () => {
                         Recommended
                     </h2>
                     <Carousel data-bs-theme="dark">
-                        {nannyBlocks.map(block => (
+                        {recommendedBlocks.map(block => (
                             <Carousel.Item>
                 <Stack
                   direction="horizontal"
                   className="h-100 justify-content-center align-items-center"
                   gap={3}
-                >
-                                    {block.map((nanny, idx) => {
-                                        if (nanny.recommended) {
-                                            return (
-                                                <ServiceCard
-                                                    key={idx}
-                                                    photos={nanny.photos}
-                                                    name={nanny.name}
-                                                    rating={nanny.rating}
-                                                    numberOfRating={nanny.numberOfRating}
-                                                    address={nanny.address}
-                                                    district={nanny.district}
-                                                    experience={nanny.experience}
-                                                    expertise={nanny.expertise} />
-                                            )
-                                        }
-                                    })}
+            >
+                                    {block.map((nanny, idx) => (
+                                        <ServiceCard
+                                            key={idx}
+                                            photos={nanny.photos}
+                                            name={nanny.name}
+                                            rating={nanny.rating}
+                                            numberOfRating={nanny.numberOfRating}
+                                            address={nanny.address}
+                                            district={nanny.district}
+                                            experience={nanny.experience}
+                                            expertise={nanny.expertise} />
+                                    ))}
                 </Stack>
               </Carousel.Item>
                         )) }
@@ -85,7 +98,32 @@ const ServicesSection = () => {
                 <Row className="mb-4">
                     <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'left', }}>
                         New Nannies
-                    </h2></Row>
+                    </h2>
+                    <Carousel data-bs-theme="dark">
+                        {newBlocks.map(block => (
+                            <Carousel.Item>
+                                <Stack
+                                    direction="horizontal"
+                                    className="h-100 justify-content-center align-items-center"
+                                    gap={3}
+                                >
+                                    {block.map((nanny, idx) => (
+                                        <ServiceCard
+                                            key={idx}
+                                            photos={nanny.photos}
+                                            name={nanny.name}
+                                            rating={nanny.rating}
+                                            numberOfRating={nanny.numberOfRating}
+                                            address={nanny.address}
+                                            district={nanny.district}
+                                            experience={nanny.experience}
+                                            expertise={nanny.expertise} />
+                                    ))}
+                                </Stack>
+                                </Carousel.Item>
+                        ))}
+                    </Carousel>
+                </Row>
 
                 {/* Show nannies by Districts Tabs */}   
                 <Row className="mb-4">

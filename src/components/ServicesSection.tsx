@@ -93,15 +93,25 @@ const ServicesSection = () => {
                         Browse by Districts
                     </h2>
                     <Tabs defaultActiveKey="home" fill>
-                        {districts.map((district, idx) => (
+                        {districts.map(district => (
                             <Tab eventKey={district} title={district}>
+                                <Carousel data-bs-theme="dark" className="mt-10">
                                 {nannies.map((nanny) => {
                                     if (nanny.district === district) {
                                         return (
-                                            <p>{nanny.name}</p>
+                                            <Carousel.Item><ServiceCard
+                                                photos={nanny.photos}
+                                                name={nanny.name}
+                                                rating={nanny.rating}
+                                                numberOfRating={nanny.numberOfRating}
+                                                address={nanny.address}
+                                                district={nanny.district}
+                                                experience={nanny.experience}
+                                                expertise={nanny.expertise} /></Carousel.Item>
                                         )
                                     }
                                 })}
+                                </Carousel>
                             </Tab>
                             
                         ) )}

@@ -30,7 +30,8 @@
       "first aid certified",
       "CPR certified",
       "meal preparation"
-    ]
+    ],
+    "recommended":true
   },
   {
     "id": 2,
@@ -63,7 +64,8 @@
       "first aid certified",
       "CPR certified",
       "meal preparation"
-    ]
+    ],
+    "recommended": false
   },
   {
     "id": 3,
@@ -96,7 +98,8 @@
       "first aid certified",
       "CPR certified",
       "meal preparation"
-    ]
+    ],
+    "recommended":true
   },
   {
     "id": 4,
@@ -129,7 +132,8 @@
       "first aid certified",
       "CPR certified",
       "meal preparation"
-    ]
+    ],
+    "recommended":true
   },
   {
     "id": 5,
@@ -162,6 +166,7 @@
       "first aid certified",
       "CPR certified",
       "meal preparation"
-    ]
+    ],
+    "recommended":true
   }
 ]

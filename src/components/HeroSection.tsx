@@ -7,32 +7,33 @@ import serviceIcon from '../assets/service-icon.png';
 import HeroCard from "../components/ui/HeroCard";
 import moment from 'moment'; 
 import { useNavigate } from 'react-router-dom';
+interface serviceProps {
+    id: string;
+    title: string;
+}
+
+interface resultsStateProps {
+    service: serviceProps;
+    date: string;
+    numOfBabies: number;
+}
+
+const selectedServices = [
+    { id: "conf-nanny", title: "Confinement Nanny" },
+    { id: "adhoc", title: "One Time / Ad Hoc" },
+    { id: "recurring", title: "Recurring / Long-term" },
+]
 
 const HeroSection = () => {
 
     // Choose services from card group
     const [selectedService, setSelectedService] = useState({ id: "", title: "" });
 
-    interface serviceProps {
-        id: string;
-        title: string;
-    }
-
-    const selectedServices = [
-        { id: "conf-nanny", title: "Confinement Nanny" },
-        { id: "adhoc", title: "One Time / Ad Hoc" },
-        { id: "recurring", title: "Recurring / Long-term" },
-    ]
-
-    // Pass selected service to results page
-    const navigate = useNavigate();
-    const gotoResults = (service: serviceProps, e) => { navigate("/results", { state: service }) }
-
     // Choose date range
-    const [selectedDateTime, setSelectedDateTime] = useState('');
-    const formattedDisplayDate = selectedDateTime ? moment(selectedDateTime).format('DD-MM-YYYY') : '';
+    const [selectedDate, setSelectedDate] = useState('');
+    const formattedDisplayDate = selectedDate ? moment(selectedDate).format('DD-MM-YYYY') : '';
     const handleDateChange = (e) => {
-        setSelectedDateTime(e.target.value);
+        setSelectedDate(e.target.value);
       };
 
     // Choose number of babies
@@ -44,11 +45,21 @@ const HeroSection = () => {
         } else return 0;
     });
 
+    // Pass data to results page
+    const navigate = useNavigate();
+    const resultsState: resultsStateProps = {
+        "service": selectedService,
+        "date": formattedDisplayDate,
+        "numOfBabies": numOfBabies
+    }
+    const gotoResults = () => { navigate("/results", { state: resultsState }) }
+
 
     return (
         <section className="py-5">
             <Container>
                 <Row className="align-items-center g-5">
+                    {/*Service selection and booking form*/}
                     <Col lg={7}>
                         <div className="mb-4">
                             <h1 className="display-3 fw-bold mb-3">Local, trusted nanny care</h1>
@@ -100,15 +111,15 @@ const HeroSection = () => {
                                 ))}
                             </CardGroup>
 
-                            {/* Date/Time picker */ }
                             <div className="bg-white p-3 rounded-3 d-flex flex-column flex-sm-row gap-3 align-items-center">
                                 <div className="d-flex gap-3 flex-wrap">
+                                    {/* Date/Time picker */}
                                     <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
                                         <Form.Group controlId="formDate">
                                             <Form.Label>Select Date </Form.Label>
                                             <Form.Control
                                                 type="date"
-                                                value={selectedDateTime}
+                                                value={selectedDate}
                                                 onChange={handleDateChange}
                                             />
                                         </Form.Group>
@@ -121,8 +132,10 @@ const HeroSection = () => {
                                         <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
+
+                                {/*go to results page*/}
                                 <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto"
-                                    onClick={e => { gotoResults(selectedService, e) }}>
+                                    onClick={gotoResults}>
                                     Continue <ChevronRight size={10} />
                                 </Button>
                             </div>

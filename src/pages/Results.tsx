@@ -18,6 +18,7 @@ const Results = () => {
             {/*result here*/}
             <section className="py-5">
                 <Container>
+                    <Row className="align-items-center g-5">Search here</Row>
                     <Row className="align-items-center g-5">Breadcumb here</Row>
                     <Row className="align-items-center g-5">
                         <Col lg={4}>

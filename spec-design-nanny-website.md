@@ -7,7 +7,7 @@ The most important page, consists of 5 sections:
 ### 1.1. Booking section
 Include a place to advertise the page, and a booking form for customers to book services. 
 * To advertise the page: use a photo and a slogan.
-* To book services: booking form with: services (confinement nanny, one time / ad hoc, recurring / long-term), date and time picker, enquiries (optional), in grid styles. And button "continue".
+* To book services: booking form with: services (confinement nanny, one time / ad hoc, recurring / long-term), date and time picker, number of babies, in grid styles. And button "continue".
 
 (if signed in needed)
 When a customer clicks this button, the system will ask if they have already signed up.
@@ -51,6 +51,7 @@ Contain 4 sections:
 ## 5. Result page
 
 After signing in, the system will redirect to result page to choose the options:
+* First, user can see a simple search: To refine the search, user can fill in keywords (same as in landing page) in the simpler form and click button "search".
 * First, user can see a breadcrumbs: current page’s location within a navigational hierarchy.
 * Then, a filter on the left. The filter includes:
   - Experience (years): range to choose minimum experience

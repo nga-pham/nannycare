@@ -14,14 +14,20 @@ interface ServiceCardProps {
     onClick?: () => void;
 }
 
-const ServiceCard = ({ photos, name, rating, numberOfRating, address, district, experience, services } : ServiceCardProps) => {
+const ServiceCard = ({
+    photos, name, rating, numberOfRating, address, district, experience, services
+}: ServiceCardProps) => {
     return (
     <Card bg="light" style={{ width: "20rem" }}>
                       <Card.Img variant="top" src={photos} />
                       <Card.Body>
                         <Card.Title><p style={{color: '#000', textAlign: 'left'}}>{name}</p></Card.Title>
                         <Card.Text style={{color: '#000', textAlign: 'left', fontSize: '1rem'}}>
-                            <p style={{ fontWeight: 'bold' }}>{rating} <Star fill="orange" strokeWidth={0} size={12} style={{ marginBottom: '0.25rem' }} /> ({numberOfRating})</p>
+                    <p style={{ fontWeight: 'bold' }}>
+                        {rating}
+                        <Star fill="orange" strokeWidth={0} size={12} style={{ marginBottom: '0.25rem' }} />
+                        ({numberOfRating})
+                    </p>
                             <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>{`${address ? address : ""}${district ? `, ${district}` : ""}`}</p>
                             <p>{experience} years experience</p>
                             <p>{services.map(skill => (

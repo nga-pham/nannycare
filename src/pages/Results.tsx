@@ -1,10 +1,13 @@
 ﻿import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useLocation } from 'react-router-dom';
-import { Container, Row, Col, Button, CardGroup, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, CardGroup, Card, Form } from "react-bootstrap";
 import { useState } from 'react';
 import nannies from "../nannies.json"
+import { Star } from 'lucide-react';
 
+// previous search criteria
+{/*{state ? <div>{`${state.service.id} ${state.service.title} ${state.date} ${state.numOfBabies}` }</div> : "no result" }*/ }
 
 // add label and handle change for choosing districts
 // Group nannies by district
@@ -106,17 +109,46 @@ const Results = () => {
                                     </Row>
                                 )}
 
+                                <Form.Group className="w-100">
+                                    <Button variant="info">Search</Button>
+                                    <Button variant="danger" className="ms-2">Reset</Button>
+                                </Form.Group>
                             </Container>
                         </Col>
 
                         {/*results from filter and search*/}
                         <Col lg={8}>
-                            results here
+                            <CardGroup>
+                                {nannies.map((nanny) => (
+                                    <Card key={nanny.id} className="m-2" style={{ minWidth: '18rem' }}>
+                                        <Card.Img variant="top" src={nanny.photos} />
+                                        <Card.Body>
+                                            <Card.Title>
+                                                <p style={{ color: '#000', textAlign: 'left' }}>{nanny.name}</p>
+                                            </Card.Title>
+                                            <Card.Text style={{ color: '#000', textAlign: 'left', fontSize: '1rem' }}>
+                                                <p style={{ fontWeight: 'bold' }}>
+                                                    {nanny.rating}
+                                                    <Star fill="orange" strokeWidth={0} size={12} style={{ marginBottom: '0.25rem' }} />
+                                                    ({nanny.numberOfRating})
+                                                </p>
+                                                <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+                                                    {`${nanny.address ? nanny.address : ""}${nanny.district ? `, ${nanny.district}` : ""}`}</p>
+                                                <p>{nanny.experience} years experience</p>
+                                                <p>{nanny.services.map(skill => (
+                                                    <span key={skill} style={{ marginRight: '0.5rem', padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem', fontSize: '0.875rem' }}>{skill}</span>
+                                                ))}</p>
+                                            </Card.Text>
+                                            <Button variant="info">Book now</Button>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
+                            </CardGroup>
                         </Col>
                     </Row>
 
                 </Container>
-                {state ? <div>{`${state.service.id} ${state.service.title} ${state.date} ${state.numOfBabies}` }</div> : "no result" }
+                
             </section>
 
         </div>

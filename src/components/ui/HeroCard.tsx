@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 interface HeroCardProps {
     icon: string | undefined;
   title: string;
-  selected?: boolean;
+    selected?: boolean;
   onClick?: () => void;
 }
 

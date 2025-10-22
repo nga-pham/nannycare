@@ -6,6 +6,7 @@ import { TooltipProvider } from "../src/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "../src/pages/NotFound";
+import Results from "../src/pages/Results";
 
 const App = () => (
     <TooltipProvider>
@@ -14,7 +15,7 @@ const App = () => (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Index />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="/results" element={<Results />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

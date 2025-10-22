@@ -4,12 +4,29 @@ import { Star, PawPrint, ChevronRight, Plus, Minus } from "lucide-react";
 import heroImage from "../assets/caregiver.jpg";
 import caregiversGroup from "../assets/caregiver-group.jpg";
 import serviceIcon from '../assets/service-icon.png';
-import ServiceCard from "../components/ui/ServiceCard";
+import HeroCard from "../components/ui/HeroCard";
 import moment from 'moment'; 
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+
     // Choose services from card group
-    const [selectedService, setSelectedService] = useState("conf-nanny");
+    const [selectedService, setSelectedService] = useState({ id: "", title: "" });
+
+    interface serviceProps {
+        id: string;
+        title: string;
+    }
+
+    const selectedServices = [
+        { id: "conf-nanny", title: "Confinement Nanny" },
+        { id: "adhoc", title: "One Time / Ad Hoc" },
+        { id: "recurring", title: "Recurring / Long-term" },
+    ]
+
+    // Pass selected service to results page
+    const navigate = useNavigate();
+    const gotoResults = (service: serviceProps, e) => { navigate("/results", { state: service }) }
 
     // Choose date range
     const [selectedDateTime, setSelectedDateTime] = useState('');
@@ -72,24 +89,15 @@ const HeroSection = () => {
 
                             {/* Service Selection */}
                             <CardGroup>
-                                <ServiceCard
-                                    icon={serviceIcon}
-                                    title="Confinement Nanny"
-                                    selected={selectedService === "conf-nanny"}
-                                    onClick={() => setSelectedService("conf-nanny")}
-                                />
-                                <ServiceCard
-                                    icon={serviceIcon}
-                                    title="One Time / Ad Hoc"
-                                    selected={selectedService === "adhoc"}
-                                    onClick={() => setSelectedService("adhoc")}
-                                />
-                                <ServiceCard
-                                    icon={serviceIcon}
-                                    title="Recurring / Long-term"
-                                    selected={selectedService === "recurring"}
-                                    onClick={() => setSelectedService("recurring")}
-                                />
+                                {selectedServices.map((service) => (
+                                        <HeroCard
+                                            key={service.id}
+                                            icon={serviceIcon}
+                                            title={service.title}
+                                        onClick={() => setSelectedService(service)}
+                                        selected={selectedService.id === service.id}
+                                        />
+                                ))}
                             </CardGroup>
 
                             {/* Date/Time picker */ }
@@ -113,13 +121,15 @@ const HeroSection = () => {
                                         <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
-                                <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto">
+                                <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto"
+                                    onClick={e => { gotoResults(selectedService, e) }}>
                                     Continue <ChevronRight size={10} />
                                 </Button>
                             </div>
                         </div>
                     </Col>
 
+                    {/* Logo */ }
                     <Col lg={5} className="d-flex justify-content-center justify-content-lg-end">
                         <div className="position-relative">
                             <div

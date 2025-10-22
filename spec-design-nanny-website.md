@@ -7,7 +7,7 @@ The most important page, consists of 5 sections:
 ### 1.1. Booking section
 Include a place to advertise the page, and a booking form for customers to book services. 
 * To advertise the page: use a photo and a slogan.
-* To book services: booking form with: services (confinement nanny, one time / ad hoc, recurring / long-term), date and time picker, number of babies, in grid styles. And button "continue".
+* To book services: booking form with: services (confinement nanny, one time / ad hoc, recurring / long-term), date picker, number of babies, in grid styles. And button "continue".
 
 (if signed in needed)
 When a customer clicks this button, the system will ask if they have already signed up.
@@ -52,14 +52,13 @@ Contain 4 sections:
 
 After signing in, the system will redirect to result page to choose the options:
 * First, user can see a simple search: To refine the search, user can fill in keywords (same as in landing page) in the simpler form and click button "search".
-* First, user can see a breadcrumbs: current page’s location within a navigational hierarchy.
+* Then, user can see a breadcrumbs: current page’s location within a navigational hierarchy.
 * Then, a filter on the left. The filter includes:
+  - Name: text box to fill in the name of nanny
   - Experience (years): range to choose minimum experience
-  - Expertise (special skills): checklist to choose multiple special skills
+  - Available time: Time picker to choose the available time
   - Star rating: range to choose minimum star rating
-  - District: dropdown to choose available district
-  - Address: text box to fill in the address or area
-  - Available time: date and time picker to choose the available time
+  - District: checkbox to choose available districts
 * The options are on the right, are a list of nannies, each with: photos, name, their experience (years), expertise, star rating, address, and their available time. 
 User then can look at each nanny, see if someone is match, choose someone to see details (redirect to detail page). Or a button "Book now" to book directly.
 When user clicks button "Book now", the system will redirect to detail page with booking section.

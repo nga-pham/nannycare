@@ -10,23 +10,23 @@ interface ServiceCardProps {
     address: string | "";
     district: string | "";
     experience: number | 0;
-    expertise: string[] | [];
+    services: string[] | [];
     onClick?: () => void;
 }
 
-const ServiceCard = ({ photos, name, rating, numberOfRating, address, district, experience, expertise } : ServiceCardProps) => {
+const ServiceCard = ({ photos, name, rating, numberOfRating, address, district, experience, services } : ServiceCardProps) => {
     return (
     <Card bg="light" style={{ width: "20rem" }}>
                       <Card.Img variant="top" src={photos} />
                       <Card.Body>
                         <Card.Title><p style={{color: '#000', textAlign: 'left'}}>{name}</p></Card.Title>
                         <Card.Text style={{color: '#000', textAlign: 'left', fontSize: '1rem'}}>
-                    <p style={{ fontWeight: 'bold' }}>{rating} <Star fill="orange" strokeWidth={0} size={12} style={{ marginBottom: '0.25rem' }} /> ({numberOfRating})</p>
-                    <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>{`${address ? address : ""}${district ? `, ${district}` : ""}`}</p>
-                        <p>{experience} years experience</p>
-                        <p>{expertise.map(skill => (
-                            <span key={skill} style={{marginRight: '0.5rem', padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem', fontSize: '0.875rem'}}>{skill}</span>
-                        ))}</p>
+                            <p style={{ fontWeight: 'bold' }}>{rating} <Star fill="orange" strokeWidth={0} size={12} style={{ marginBottom: '0.25rem' }} /> ({numberOfRating})</p>
+                            <p style={{ color: 'rgba(0, 0, 0, 0.5)' }}>{`${address ? address : ""}${district ? `, ${district}` : ""}`}</p>
+                            <p>{experience} years experience</p>
+                            <p>{services.map(skill => (
+                                <span key={skill} style={{marginRight: '0.5rem', padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem', fontSize: '0.875rem'}}>{skill}</span>
+                            ))}</p>
                         </Card.Text>
                       </Card.Body>
                     </Card>
@@ -48,7 +48,6 @@ const lengthOfCarouselItem = 3;
 // Convert dates to timestamps for comparison
 const todayTimestamps = Date.parse(new Date().toISOString());
 let newBlocks = [];
-
 // If dayToJoin is within last 365 days, consider as new nanny
 const gap = 365 * 24 * 60 * 60 * 1000; // 365 days in milliseconds
 for (let i = 0; i < nannies.length; i += lengthOfCarouselItem) {
@@ -88,7 +87,8 @@ const ServicesSection = () => {
                                             address={nanny.address}
                                             district={nanny.district}
                                             experience={nanny.experience}
-                                            expertise={nanny.expertise} />
+                                            services={nanny.services}
+                                        />
                                     ))}
                 </Stack>
               </Carousel.Item>
@@ -117,7 +117,8 @@ const ServicesSection = () => {
                                             address={nanny.address}
                                             district={nanny.district}
                                             experience={nanny.experience}
-                                            expertise={nanny.expertise} />
+                                            services={nanny.services}
+                                        />
                                     ))}
                                 </Stack>
                                 </Carousel.Item>
@@ -145,7 +146,9 @@ const ServicesSection = () => {
                                                 address={nanny.address}
                                                 district={nanny.district}
                                                 experience={nanny.experience}
-                                                expertise={nanny.expertise} /></Carousel.Item>
+                                                services={nanny.services}
+                                            />
+                                            </Carousel.Item>
                                         )
                                     }
                                 })}

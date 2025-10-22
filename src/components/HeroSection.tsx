@@ -49,6 +49,7 @@ const HeroSection = () => {
         <section className="py-5">
             <Container>
                 <Row className="align-items-center g-5">
+                    {/*Service selection and booking form*/}
                     <Col lg={7}>
                         <div className="mb-4">
                             <h1 className="display-3 fw-bold mb-3">Local, trusted nanny care</h1>
@@ -100,9 +101,9 @@ const HeroSection = () => {
                                 ))}
                             </CardGroup>
 
-                            {/* Date/Time picker */ }
                             <div className="bg-white p-3 rounded-3 d-flex flex-column flex-sm-row gap-3 align-items-center">
                                 <div className="d-flex gap-3 flex-wrap">
+                                    {/* Date/Time picker */}
                                     <div className="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-3">
                                         <Form.Group controlId="formDate">
                                             <Form.Label>Select Date </Form.Label>
@@ -121,6 +122,8 @@ const HeroSection = () => {
                                         <Minus style={{ cursor: "pointer", }} onClick={decrementBabies}>-</Minus>
                                     </div>
                                 </div>
+
+                                {/*go to results page*/}
                                 <Button variant="primary" size="lg" className="d-flex align-items-center gap-2 ms-sm-auto"
                                     onClick={e => { gotoResults(selectedService, e) }}>
                                     Continue <ChevronRight size={10} />

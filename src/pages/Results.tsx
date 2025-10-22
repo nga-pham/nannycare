@@ -6,7 +6,8 @@ const Results = () => {
 
     // get selected service from landing page
     const location = useLocation();
-    const { state } = location; // Destructure the state object 
+    const { state } = location; // Destructure the state object from location : {id: string; title: string }
+
     return (
         <div className="min-h-screen">
             <Header />

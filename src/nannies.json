@@ -119,7 +119,7 @@
     "services": [ "adhoc", "recurring" ],
     "rating": 4.7,
     "numberOfRating": 25,
-    "startTime": "10:00",
+    "startTime": "9:30",
     "endTime": "20:00",
     "reviews": [
       {

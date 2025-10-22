@@ -1,6 +1,6 @@
 ﻿import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, CardGroup, Card, Form } from "react-bootstrap";
 import { useState } from 'react';
 import nannies from "../nannies.json"
@@ -40,7 +40,6 @@ const Results = () => {
         setRangeEndTimeValue(event.target.value)
     }
 
-
     // add label and handle change for choosing range of ratings
     const [rangeRatingValue, setRangeRatingValue] = useState<number>(1); // Initial value for the range
     const handleRangeRatingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +47,13 @@ const Results = () => {
     };
 
     // add label and handle change for choosing districts
-    
+
+
+    // go to detail page to book
+    const navigate = useNavigate();
+    const goToDetail = (nannyIdx: number) => {
+        navigate(`/results/${nannyIdx}`)
+    }
 
     return (
         <div className="min-h-screen">
@@ -59,9 +64,9 @@ const Results = () => {
             <section className="py-5">
                 <Container>
                     <Row className="align-items-center g-5">Search here (services), date, number of babies</Row>
-                    <Row className="align-items-center g-5">Breadcrumbs here
+                    <Row className="align-items-center g-5 mt-2">Breadcrumbs here
                     </Row>
-                    <Row className="g-5">
+                    <Row className="g-5 mt-2">
 
                         {/*filter*/}
                         <Col lg={4} >
@@ -119,8 +124,8 @@ const Results = () => {
                         {/*results from filter and search*/}
                         <Col lg={8}>
                             <CardGroup>
-                                {nannies.map((nanny) => (
-                                    <Card key={nanny.id} className="m-2" style={{ minWidth: '18rem' }}>
+                                {nannies.map((nanny, _idx) => (
+                                    <Card key={_idx} className="m-2" style={{ minWidth: '18rem' }}>
                                         <Card.Img variant="top" src={nanny.photos} />
                                         <Card.Body>
                                             <Card.Title>
@@ -139,7 +144,7 @@ const Results = () => {
                                                     <span key={skill} style={{ marginRight: '0.5rem', padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '0.25rem', fontSize: '0.875rem' }}>{skill}</span>
                                                 ))}</p>
                                             </Card.Text>
-                                            <Button variant="info">Book now</Button>
+                                            <Button variant="info" onClick={() => goToDetail(_idx)}>Book now</Button>
                                         </Card.Body>
                                     </Card>
                                 ))}

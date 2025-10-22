@@ -1,7 +1,7 @@
 ﻿import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Button, CardGroup, Card, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, CardGroup, Card, Form, Breadcrumb } from "react-bootstrap";
 import { useState } from 'react';
 import nannies from "../nannies.json"
 import { Star } from 'lucide-react';
@@ -64,7 +64,11 @@ const Results = () => {
             <section className="py-5">
                 <Container>
                     <Row className="align-items-center g-5">Search here (services), date, number of babies</Row>
-                    <Row className="align-items-center g-5 mt-2">Breadcrumbs here
+                    <Row className="align-items-center g-5 mt-2">
+                        <Breadcrumb>
+                            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                            <Breadcrumb.Item active>Nannies</Breadcrumb.Item>
+                        </Breadcrumb>
                     </Row>
                     <Row className="g-5 mt-2">
 

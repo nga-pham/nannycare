@@ -2,7 +2,7 @@
 import Footer from "../components/Footer";
 import { useParams } from 'react-router-dom';
 import nannies from "../nannies.json";
-import { Container, Row, Carousel, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Carousel, Col, Card, Button, Breadcrumb } from "react-bootstrap";
 import { Star } from 'lucide-react';
 
 const Detail = () => {
@@ -59,7 +59,12 @@ const Detail = () => {
 
             <section className="py-5">
                 <Container>
-                    <Row className="align-items-center g-5">Breadcrumbs here
+                    <Row className="align-items-center g-5">
+                        <Breadcrumb>
+                            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                            <Breadcrumb.Item href="/results">Nannies</Breadcrumb.Item>
+                            <Breadcrumb.Item active>{currentNanny.name}</Breadcrumb.Item>
+                        </Breadcrumb>
                     </Row>
 
                     {/*basic information here*/}

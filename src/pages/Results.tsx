@@ -146,9 +146,9 @@ const Results = () => {
                             </CardGroup>
                         </Col>
                     </Row>
-
+                    {/*footer*/}
+                    <Footer />
                 </Container>
-                
             </section>
 
         </div>

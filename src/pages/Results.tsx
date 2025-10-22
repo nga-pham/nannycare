@@ -116,7 +116,7 @@ const Results = () => {
                     </Row>
 
                 </Container>
-                {/*{state ? <div>{`${state.id} ${state.title}` }</div> : "no result" }*/}
+                {state ? <div>{`${state.service.id} ${state.service.title} ${state.date} ${state.numOfBabies}` }</div> : "no result" }
             </section>
 
         </div>
